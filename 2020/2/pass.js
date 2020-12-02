@@ -2,6 +2,60 @@ let data = require("fs").readFileSync("input.txt", "utf8");
 let rawPasswords = data.split("\n").map(x => x.split(/(: |-| )/g).filter(x => ![": ", " ", "-"].includes(x))).filter(x => x.length == 4);
 let goodPasswords;
 
+// function parse(data) {
+// 	let parsed = [];
+// 	let temp = {
+// 		// 0 => from
+// 		// 1 => to
+// 		// 2 => char
+// 		// 3 => pass
+// 		mode: 0,
+
+// 		from: "",
+// 		to: "",
+// 		char: "",
+// 		pass: "",
+// 	}
+
+// 	for (let i in data) {
+// 		let c = data[i];
+
+// 		if (temp.mode == 0) {
+// 			if (c == "-")
+// 				temp.mode = 1;
+// 			else
+// 				temp.from += c;
+// 		} else if (temp.mode == 1) {
+// 			if (c == " ")
+// 				temp.mode = 2;
+// 			else
+// 				temp.to += c;
+// 		} else if (temp.mode == 2) {
+// 			if (c == ":")
+// 				temp.mode = 3;
+// 			else
+// 				temp.char += c;
+// 		} else if (temp.mode == 3) {
+// 			if (data[i - 1] == ":" && c == " ") {
+// 				// nothing
+// 			} else if (c == "\n") {
+// 				parsed.push([temp.from, temp.to, temp.char, temp.pass]);
+// 				temp = {
+// 					mode: 0,
+// 					from: "",
+// 					to: "",
+// 					char: "",
+// 					pass: "",
+// 				}
+// 			} else {
+// 				temp.pass += c;
+// 			}
+// 		}
+// 	}
+
+// 	return parsed;
+// }
+
 // part 1
 goodPasswords = [];
 for (let pw of rawPasswords) {
