@@ -1,5 +1,3 @@
-const { parse } = require("path");
-
 let data = require("fs").readFileSync("input.txt", "utf8");
 let rawPasswords = data.split("\n").map(x => x.split(/(: |-| )/g).filter(x => ![": ", " ", "-"].includes(x))).filter(x => x.length == 4);
 let goodPasswords;
